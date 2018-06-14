@@ -1,0 +1,59 @@
+{
+  "project_info": {
+    "project_number": "492931816066",
+    "firebase_url": "https://storytelling-77786.firebaseio.com",
+    "project_id": "storytelling-77786",
+    "storage_bucket": "storytelling-77786.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:492931816066:android:ce7807263224094a",
+        "android_client_info": {
+          "package_name": "com.example.pasquale.tesiapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "492931816066-68g76379n5qo712p8hdqcnq19durttoq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.pasquale.tesiapp",
+            "certificate_hash": "ee648dc7f0dfaa5cc0fd476bb714963e87a35612"
+          }
+        },
+        {
+          "client_id": "492931816066-qa8ib5askeida29im4i89dh6v22d4h5k.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "492931816066-qa8ib5askeida29im4i89dh6v22d4h5k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjM6VqvGUOhXbETrpcpVNojq_nloF2eX0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "492931816066-qa8ib5askeida29im4i89dh6v22d4h5k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
