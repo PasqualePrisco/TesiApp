@@ -33,7 +33,7 @@ public class ActivitySlide extends Activity {
         imgNext = (ImageView)findViewById(R.id.rightArrow);
         imgBack = (ImageView)findViewById(R.id.leftArrow);
 
-        ArrayList<Vignetta> vignetta = getIntent().getParcelableArrayListExtra("vignette");
+        final ArrayList<Vignetta> vignetta = getIntent().getParcelableArrayListExtra("vignette");
 
         //###### get first picture path ######
         String path= vignetta.get(0).getPicture();
@@ -41,18 +41,25 @@ public class ActivitySlide extends Activity {
         //###### Load picture with Glide ######
         Glide.with(this).load(path).into(imgV);
 
-     /**   checkImgView();
+        checkImgView();
+
+        size=vignetta.size();
+        //###### next image button ######
         imgNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 temp++;
-                if(temp==size){
+                if(temp==size-2){
                     temp=50;
                     Intent intent = new Intent(getApplicationContext(),activityChoose.class);
+                    ArrayList<Vignetta> scelte= new ArrayList<>();
+                    scelte.add(vignetta.get(size));
+                    scelte.add(vignetta.get(size-1));
+                    intent.putParcelableArrayListExtra("scelte", scelte);
                     startActivity(intent);
                 }
                 else if(temp<size) {
-                   // imgV.setImageDrawable(vignette.get(temp).getPicture());
+                    Glide.with(getApplicationContext()).load(vignetta.get(temp).getPicture()).into(imgV);
                     checkImgView();
                 }
 
@@ -62,28 +69,29 @@ public class ActivitySlide extends Activity {
             }
         });
 
+        //###### back image button ######
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(temp>0) {
                     temp--;
-               //     imgV.setImageDrawable(vignette.get(temp).getPicture());
+                    Glide.with(getApplicationContext()).load(vignetta.get(temp).getPicture()).into(imgV);
                     checkImgView();
                 }
             }
-        });*/
+        });
 
     }
 
 
-   /* public void checkImgView(){
+    public void checkImgView(){
         if(temp==0) {
             imgBack.setVisibility(View.INVISIBLE);
         }
         else if(temp==1){
             imgBack.setVisibility(View.VISIBLE);
         }
-    }*/
+    }
 
 
 }
