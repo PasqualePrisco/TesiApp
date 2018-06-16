@@ -27,7 +27,7 @@ public class MainActivity extends Activity {
 
     public ListView listView;
     public Button confirm;
-    public List<Album> albums =new ArrayList<>();
+    public ArrayList<Album> albums =new ArrayList<Album>();
     public int temp;
     private FirebaseDatabase mDatabase;
     private DatabaseReference myRef;
@@ -56,8 +56,8 @@ public class MainActivity extends Activity {
                 if (customAdapter != null) {
                     customAdapter.clear();
                 }
-                List<Vignetta> vignette = new ArrayList<>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    ArrayList<Vignetta> vignette = new ArrayList<>();
                     Album album = ds.getValue(Album.class);
                     album.setName(ds.child("nome").getValue(String.class));
                     for (DataSnapshot dv : ds.child("vignette").getChildren()) {
@@ -70,7 +70,6 @@ public class MainActivity extends Activity {
                     customAdapter.add(album);
                     albums.add(album);
                 }
-
             }
 
             @Override
@@ -98,8 +97,7 @@ public class MainActivity extends Activity {
 
     public void startAlbum(View v){
         Intent intent = new Intent(getApplicationContext(),ActivitySlide.class);
-
-        intent.putParcelableArrayListExtra("vignette", (ArrayList<? extends Parcelable>)  albums.get(temp).getVignette());
+        intent.putParcelableArrayListExtra("vignette", (ArrayList<? extends Parcelable>) albums.get(temp).getVignette());
 
         startActivity(intent);
     }

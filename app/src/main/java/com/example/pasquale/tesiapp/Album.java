@@ -3,12 +3,12 @@ package com.example.pasquale.tesiapp;
 
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class Album  {
 
     private String name;
-    private List<Vignetta> vignette;
+    private ArrayList<Vignetta> vignette;
 
     public Album(){
         // Default constructor required for calls to DataSnapshot.getValue(Post.class)
@@ -28,11 +28,11 @@ public class Album  {
         this.name = name;
     }
 
-    public List<Vignetta> getVignette() {
+    public ArrayList<Vignetta> getVignette() {
         return vignette;
     }
 
-    public void setVignette(List<Vignetta> vignette) {
+    public void setVignette(ArrayList<Vignetta> vignette) {
         this.vignette = vignette;
     }
 

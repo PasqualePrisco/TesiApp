@@ -38,7 +38,7 @@ public class Vignetta implements Parcelable {
     }
 
 
-    @Override
+   @Override
     public int describeContents() {
         return 0;
     }

@@ -43,13 +43,14 @@ public class ActivitySlide extends Activity {
 
         checkImgView();
 
-        size=vignetta.size();
+        size=vignetta.size() - 2;
+
         //###### next image button ######
         imgNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 temp++;
-                if(temp==size-2){
+                if(temp==size){
                     temp=50;
                     Intent intent = new Intent(getApplicationContext(),activityChoose.class);
                     ArrayList<Vignetta> scelte= new ArrayList<>();
@@ -70,7 +71,7 @@ public class ActivitySlide extends Activity {
         });
 
         //###### back image button ######
-        imgBack.setOnClickListener(new View.OnClickListener() {
+          imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(temp>0) {
