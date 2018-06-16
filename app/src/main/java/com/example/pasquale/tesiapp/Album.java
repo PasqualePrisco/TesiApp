@@ -1,30 +1,41 @@
 package com.example.pasquale.tesiapp;
 
+
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class Album {
+public class Album  {
 
-    private String title;
-    private ArrayList<Vignetta> vignette;
+    private String name;
+    private List<Vignetta> vignette;
 
-    public Album(String title, ArrayList<Vignetta> vignette){
-        this.title=title;
+    public Album(){
+        // Default constructor required for calls to DataSnapshot.getValue(Post.class)
+    }
+
+
+    public Album(String name, ArrayList<Vignetta> vignette){
+        this.name=name;
         this.vignette=vignette;
     }
 
-    public String getTitle() {
-        return title;
+    public String getName() {
+        return name;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public ArrayList<Vignetta> getVignette() {
+    public List<Vignetta> getVignette() {
         return vignette;
     }
 
-    public void setVignette(ArrayList<Vignetta> vignette) {
+    public void setVignette(List<Vignetta> vignette) {
         this.vignette = vignette;
     }
+
+
+
 }

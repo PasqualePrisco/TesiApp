@@ -38,9 +38,8 @@ public class CustomAdapter extends ArrayAdapter<Album> {
         txt = (TextView) v.findViewById(R.id.titleText);
 
 
-        txt.setText(a.getTitle());
+        txt.setText(a.getName());
 
-        txt.setTag(position);
 
         return v;
     }
