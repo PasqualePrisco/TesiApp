@@ -4,13 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -19,7 +19,7 @@ public class activityChoose extends AppCompatActivity {
 
     ImageView img1;
     ImageView img2;
-    ArrayList<? extends Vignetta> vignette;
+//    ArrayList<? extends Vignetta> vignette;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,30 +29,122 @@ public class activityChoose extends AppCompatActivity {
         img1=(ImageView)findViewById(R.id.vignetta1);
         img2=(ImageView)findViewById(R.id.vignetta2);
 
+        //##### Array with the img #####
+        final ArrayList<Vignetta> vignetta = getIntent().getParcelableArrayListExtra("scelte");
 
-     /**   Random rand = new Random();
-        int sizeMin= vignette.size()-1;
-        int n = rand.nextInt(vignette.size()-sizeMin+1)+sizeMin;*/
+        //###### get first picture path0 ######
+        String path0= vignetta.get(0).getPicture();
+        String path1= vignetta.get(1).getPicture();
 
-        img1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                show();
+
+        //##### Generate random boolean #####
+        Random random= new Random();
+        int randCorr= random.nextInt();
+
+        //##### the app needs to know in which position of the array the right image is located #####
+        if(vignetta.get(0).getName().equals("correct") /*&& vignetta.get(1).getName().equals("wrong")*/){
+            Log.d("", "onCreate: ------------------------------------------------------------> la prima posizione dell'array è corretta");
+
+            //##### with even numbers the correct picture goes into img1 container otherwise in the img2 container
+            if(randCorr%2==0) {
+                Log.d("", "onCreate: ------------------------------------------------------------> numero pari quindi corretta in prima posizione");
+
+                //##### Load picture with Glide #####
+                Glide.with(this).load(path0).into(img1);
+                Glide.with(this).load(path1).into(img2);
+                //##### img1 is the correct choise #####
+                img1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showCorrect();
+                    }
+                });
+                img2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showWrong();
+                    }
+                });
+
+            }else{
+                Log.d("", "onCreate: ------------------------------------------------------------> numero dispari quindi corretta in seconda posizione");
+
+                //###### Load picture with Glide #####
+                Glide.with(this).load(path0).into(img2);
+                Glide.with(this).load(path1).into(img1);
+                //##### img1 is the wrong choise #####
+                img1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showWrong();
+                    }
+                });
+                img2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showCorrect();
+                    }
+                });
             }
-        });
+        }else if(vignetta.get(0).getName().equals("wrong") /*&& vignetta.get(1).getName().equals("correct")*/){
 
+            Log.d("", "onCreate: ------------------------------------------------------------> la prima posizione dell'array è sbagliata");
+            //##### with even number the correct picture goes into img1 container otherwise in the img2 container
+            if(randCorr%2==0) {
+                Log.d("", "onCreate: ------------------------------------------------------------> numero pari quindi corretta in seconda posizione");
 
-        img2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                showRight();
+                //##### Load picture with Glide #####
+                Glide.with(this).load(path0).into(img1);
+                Glide.with(this).load(path1).into(img2);
+                //##### img1 is the correct choise #####
+                img1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showWrong();
+                    }
+                });
+                img2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showCorrect();
+                    }
+                });
+
+            }else{
+                Log.d("", "onCreate: ------------------------------------------------------------> numero dispari quindi corretta in prima posizione");
+
+                //###### Load picture with Glide #####
+                Glide.with(this).load(path0).into(img2);
+                Glide.with(this).load(path1).into(img1);
+                //##### img1 is the wrong choise #####
+                img1.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showCorrect();
+                    }
+                });
+                img2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        showWrong();
+                    }
+                });
             }
-        });
-
+        }
+//        else{
+//            //##### The app can't find a wrong or correct case between the image and it automatically send to the mainActivity
+//
+//            Log.e("Err", "---------------------------------------------------------->selezioni non corrette ");
+//            Toast.makeText(getApplicationContext(),"The app as found a problem restart it or contact the doctor!",Toast.LENGTH_LONG).show();
+//            Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+//            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//
+//            startActivity(intent);
+//        }
     }
 
 
-    public void show() {
+    public void showCorrect() {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -79,7 +171,7 @@ public class activityChoose extends AppCompatActivity {
     }
 
 
-        public void showRight(){
+        public void showWrong(){
             DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {

@@ -13,7 +13,6 @@
         android:layout_height="200dp"
         android:layout_marginTop="30dp"
         android:layout_gravity="center"
-        android:src="@drawable/vignetta"
         />
 
     <ImageView
@@ -22,7 +21,6 @@
         android:layout_height="200dp"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:src="@drawable/vignetta"
        />
 
 

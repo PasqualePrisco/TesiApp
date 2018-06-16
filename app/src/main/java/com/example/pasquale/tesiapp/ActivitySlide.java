@@ -47,6 +47,7 @@ public class ActivitySlide extends Activity {
 
         //###### next image button ######
         imgNext.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 temp++;
