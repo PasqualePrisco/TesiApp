@@ -8,28 +8,39 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seleziona un album"
-        android:gravity="center"
         android:textSize="30dp"
-        android:typeface="sans"
-        android:textColor="@android:color/black"
-        android:padding="10dp"/>
-
-    <ListView
-        android:id="@+id/albumList"
-        android:layout_width="match_parent"
-        android:layout_height="380dp"
-        ></ListView>
-
-    <Button
-        android:id="@+id/confirm"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
+        android:text="Seleziona un gioco"
         android:layout_gravity="center"
-        android:text="Gioca"
-        android:onClick="startAlbum"
+        android:textColor="@color/common_google_signin_btn_text_dark"
+        android:layout_marginBottom="30dp"
+        />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/txtAlbum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Album"
+        android:textSize="25dp"
+        android:textColor="@color/common_google_signin_btn_text_dark"
+        android:layout_marginLeft="20dp"
+        />
+
+    <TextView
+        android:id="@+id/txtSequence"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sequenze"
+        android:textSize="25dp"
+        android:textColor="@color/common_google_signin_btn_text_dark"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
         />
 
 </LinearLayout>

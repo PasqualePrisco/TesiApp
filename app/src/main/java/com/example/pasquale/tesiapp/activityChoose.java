@@ -32,6 +32,9 @@ public class activityChoose extends AppCompatActivity {
         //##### Array with the img #####
         final ArrayList<Vignetta> vignetta = getIntent().getParcelableArrayListExtra("scelte");
 
+        //###### set result code ######
+        setResult(0);
+
         //###### get first picture path0 ######
         String path0= vignetta.get(0).getPicture();
         String path1= vignetta.get(1).getPicture();
@@ -152,7 +155,7 @@ public class activityChoose extends AppCompatActivity {
                     case DialogInterface.BUTTON_POSITIVE:
                         //Yes button clicked
                         Toast.makeText(getApplicationContext(),"Corretto!",Toast.LENGTH_LONG).show();
-                        Intent intent=new Intent(getApplicationContext(), MainActivity.class);
+                        Intent intent=new Intent(getApplicationContext(), ActivityAlbum.class);
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
                         startActivity(intent);

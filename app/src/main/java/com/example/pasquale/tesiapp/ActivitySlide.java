@@ -43,6 +43,7 @@ public class ActivitySlide extends Activity {
 
         checkImgView();
 
+        //###### The last two are the options ######
         size=vignetta.size() - 2;
 
         //###### next image button ######
@@ -52,21 +53,16 @@ public class ActivitySlide extends Activity {
             public void onClick(View v) {
                 temp++;
                 if(temp==size){
-                    temp=50;
                     Intent intent = new Intent(getApplicationContext(),activityChoose.class);
                     ArrayList<Vignetta> scelte= new ArrayList<>();
                     scelte.add(vignetta.get(size));
                     scelte.add(vignetta.get(size-1));
                     intent.putParcelableArrayListExtra("scelte", scelte);
-                    startActivity(intent);
+                    startActivityForResult(intent,0);
                 }
                 else if(temp<size) {
                     Glide.with(getApplicationContext()).load(vignetta.get(temp).getPicture()).into(imgV);
                     checkImgView();
-                }
-
-                if(temp>=50){
-                    temp=size-1;
                 }
             }
         });
@@ -96,4 +92,11 @@ public class ActivitySlide extends Activity {
     }
 
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==0){
+            temp=size-1;
+        }
+    }
 }
