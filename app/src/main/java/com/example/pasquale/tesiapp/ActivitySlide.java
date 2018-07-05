@@ -3,16 +3,12 @@ package com.example.pasquale.tesiapp;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static android.content.ContentValues.TAG;
 
 public class ActivitySlide extends Activity {
 
@@ -53,7 +49,7 @@ public class ActivitySlide extends Activity {
             public void onClick(View v) {
                 temp++;
                 if(temp==size){
-                    Intent intent = new Intent(getApplicationContext(),activityChoose.class);
+                    Intent intent = new Intent(getApplicationContext(),ActivityChoice.class);
                     ArrayList<Vignetta> scelte= new ArrayList<>();
                     scelte.add(vignetta.get(size));
                     scelte.add(vignetta.get(size-1));

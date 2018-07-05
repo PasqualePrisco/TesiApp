@@ -10,7 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 public class CustomAdapter extends ArrayAdapter<Album> {
     private int resource;
@@ -33,13 +36,11 @@ public class CustomAdapter extends ArrayAdapter<Album> {
 
         Log.d("DEBUG","contact c="+a);
 
-        TextView txt;
+        ImageView cover;
 
-        txt = (TextView) v.findViewById(R.id.titleText);
+        cover = (ImageView) v.findViewById(R.id.cover);
 
-
-        txt.setText(a.getName());
-
+        Glide.with(getContext()).load(a.getCoverPath()).into(cover);
 
         return v;
     }

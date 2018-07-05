@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,7 +17,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 import static android.content.ContentValues.TAG;
@@ -59,6 +57,7 @@ public class ActivityAlbum extends Activity {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ArrayList<Vignetta> vignette = new ArrayList<>();
                     Album album = ds.getValue(Album.class);
+                    album.setCoverPath(ds.child("cover").getValue(String.class));
                     album.setName(ds.child("nome").getValue(String.class));
                     for (DataSnapshot dv : ds.child("vignette").getChildren()) {
                         Vignetta v = dv.getValue(Vignetta.class);

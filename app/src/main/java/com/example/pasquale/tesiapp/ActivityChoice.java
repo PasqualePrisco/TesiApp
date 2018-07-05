@@ -15,7 +15,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import java.util.Random;
 
-public class activityChoose extends AppCompatActivity {
+public class ActivityChoice extends AppCompatActivity {
 
     ImageView img1;
     ImageView img2;
@@ -24,7 +24,7 @@ public class activityChoose extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose);
+        setContentView(R.layout.activity_choice);
 
         img1=(ImageView)findViewById(R.id.vignetta1);
         img2=(ImageView)findViewById(R.id.vignetta2);
@@ -40,7 +40,7 @@ public class activityChoose extends AppCompatActivity {
         String path1= vignetta.get(1).getPicture();
 
 
-        //##### Generate random boolean #####
+        //##### Generate random int #####
         Random random= new Random();
         int randCorr= random.nextInt();
 

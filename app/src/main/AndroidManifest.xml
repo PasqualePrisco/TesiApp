@@ -16,16 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivitySlide">
-        </activity>
-        <activity android:name=".ActivityAlbum">
-        </activity>
+        <activity android:name=".ActivitySlide"></activity>
+        <activity android:name=".ActivityAlbum"></activity>
         <activity
-            android:name=".activityChoose"
+            android:name=".ActivityChoice"
             android:label="@string/title_activity_choose"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <service android:name="LogService"/>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".EmotionActivity"></activity>
     </application>
 
 </manifest>
